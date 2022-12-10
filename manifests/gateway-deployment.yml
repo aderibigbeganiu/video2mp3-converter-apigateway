@@ -21,6 +21,7 @@ spec:
       containers:
       - name: gateway
         image: abayomiganiy/gateway
+        imagePullPolicy: Never
         envFrom:
           - configMapRef:
               name: gateway-configmap

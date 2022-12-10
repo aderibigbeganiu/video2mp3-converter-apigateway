@@ -10,9 +10,14 @@ def token(request):
     if not token:
         return None, ("Missing credentials", 401)
 
+    headers = {
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36",
+        "Authorization": token,
+    }
     response = requests.post(
         f"{os.environ.get('AUTH_SVC_ADDRESS')}/validate",
-        headers={"Authorization": token},
+        headers=headers,
+        verify=False,
     )
 
     if response.status_code == 200:
