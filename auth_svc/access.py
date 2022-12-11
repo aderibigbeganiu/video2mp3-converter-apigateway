@@ -2,6 +2,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 
@@ -16,9 +17,8 @@ def login(request):
     }
 
     response = requests.post(
-        f'{os.environ.get("AUTH_SVC_ADDRESS")}/login',
+        f'http://{os.environ.get("AUTH_SERVICE_ADDRESS")}/login',
         auth=basicAuth,
-        verify=False,
         headers=headers,
     )
 

@@ -15,9 +15,8 @@ def token(request):
         "Authorization": token,
     }
     response = requests.post(
-        f"{os.environ.get('AUTH_SVC_ADDRESS')}/validate",
+        f"http://{os.environ.get('AUTH_SERVICE_ADDRESS')}/validate",
         headers=headers,
-        verify=False,
     )
 
     if response.status_code == 200:
